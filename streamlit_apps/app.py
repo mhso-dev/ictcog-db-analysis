@@ -24,15 +24,17 @@ st.markdown("---")
 # MySQL 연결 함수
 @st.cache_resource
 def get_engine():
+    # 환경 변수에서 MySQL 접속 정보 가져오기
     MYSQL_HOST = os.getenv('MYSQL_HOST', 'mysql')
     MYSQL_PORT = os.getenv('MYSQL_PORT', '3306')
     MYSQL_DATABASE = os.getenv('MYSQL_DATABASE', 'analysis_db')
     MYSQL_USER = os.getenv('MYSQL_USER', 'user')
     MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD', '1111')
-    
-    return create_engine(
+
+    engine = create_engine(
         f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}'
     )
+    return engine
 
 # 데이터 로드 함수
 @st.cache_data
