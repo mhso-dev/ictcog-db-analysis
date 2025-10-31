@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 1111
+      MYSQL_DATABASE: analysis_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 1111
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+
+  python:
+    build: ./python
+    ports:
+      - "8888:8888"
+      - "8501:8501"
+    volumes:
+      - ./notebooks:/workspace/notebooks
+      - ./data:/workspace/data
+      - ./streamlit_apps:/workspace/streamlit_apps
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=1111
+      - MYSQL_DATABASE=analysis_db
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:

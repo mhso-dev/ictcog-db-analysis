@@ -1,0 +1,12 @@
+jupyterlab
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+pymysql
+sqlalchemy
+cryptography
+streamlit
+google-cloud-bigquery
+pandas-gbq
