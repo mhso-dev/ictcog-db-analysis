@@ -1,0 +1,26 @@
+{
+  "language": {
+    "conversation_language": "ko",
+    "conversation_language_name": "한국어"
+  },
+  "user": {
+    "nickname": "미노오라버니"
+  },
+  "project": {
+    "name": "database-data-analysis",
+    "description": "Docker 기반 MySQL + Python 데이터 분석 실습 환경",
+    "version": "0.1.0",
+    "type": "educational",
+    "tech_stack": {
+      "database": "MySQL 8.0",
+      "language": "Python 3.11",
+      "tools": ["Jupyter Lab", "Streamlit"],
+      "infrastructure": "Docker Compose"
+    }
+  },
+  "goals": {
+    "short_term": "Jupyter Notebook 예제 개발",
+    "long_term": "현재 수준 유지 (안정성과 문서화)"
+  },
+  "target_users": ["데이터 분석 입문자", "학부생", "초급 개발자"]
+}
